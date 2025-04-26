@@ -1,0 +1,79 @@
+body {
+    font-family: sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f0f0f0;
+    margin: 0;
+}
+
+.roulette-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.roulette {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    margin-bottom: 20px;
+    transition: transform 5s cubic-bezier(0.1, 0.7, 1.0, 0.1); /* 回転アニメーション */
+}
+
+.segment {
+    position: absolute;
+    width: 50%;
+    height: 50%;
+    transform-origin: 100% 100%;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+}
+
+.segment:nth-child(1) { background-color: #f44336; transform: rotate(calc(360deg / var(--n) * var(--i))); }
+.segment:nth-child(2) { background-color: #2196f3; transform: rotate(calc(360deg / var(--n) * var(--i))); }
+.segment:nth-child(3) { background-color: #4caf50; transform: rotate(calc(360deg / var(--n) * var(--i))); }
+.segment:nth-child(4) { background-color: #ffeb3b; transform: rotate(calc(360deg / var(--n) * var(--i))); }
+.segment:nth-child(5) { background-color: #9c27b0; transform: rotate(calc(360deg / var(--n) * var(--i))); }
+.segment:nth-child(6) { background-color: #ff9800; transform: rotate(calc(360deg / var(--n) * var(--i))); }
+.segment:nth-child(7) { background-color: #00bcd4; transform: rotate(calc(360deg / var(--n) * var(--i))); }
+.segment:nth-child(8) { background-color: #e91e63; transform: rotate(calc(360deg / var(--n) * var(--i))); }
+
+.segment span {
+    transform: rotate(calc(360deg / var(--n) / 2 * -1));
+    color: #fff;
+    font-weight: bold;
+}
+
+.arrow {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 20px solid #333;
+    transform: translateX(-50%);
+    z-index: 1;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#result {
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: bold;
+}
